@@ -1,0 +1,16 @@
+//to count no of a and b separately
+%{
+#include<stdio.h>
+int c=0,d=0;
+%}
+%%
+[a]  {c++;}
+[b]  {d++;}
+.     ;
+%%
+yywrap(){}
+int main(){
+yylex();
+printf("%d %d",c,d);
+return 0;
+}
