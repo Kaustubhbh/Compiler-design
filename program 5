@@ -1,0 +1,17 @@
+//to count the no of lines,spaces,tab-meta character and rest of the characters
+%{
+#include<stdio.h>
+int a=0,b=0,c=0,d=0;
+%}
+%%
+[\n]    {a++;}
+[\t]    {b++;}
+[" "]   {c++;}
+.       {d++;}
+%%
+yywrap(){}
+int main(){
+yylex();
+printf("%d %d %d %d ",a,b,c,d);
+return 0;
+}
