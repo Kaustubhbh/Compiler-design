@@ -1,0 +1,28 @@
+//design a lex code for tokenising identifier,operator,separator,keyword 
+while(p<=3)
+{
+if(d==0)
+{ 
+m=m+m;
+d++;
+}
+else
+{
+r++;
+}
+}
+%{
+#include<stdio.h>
+%}
+%%
+auto|double|int|struct|break|else|long|switch|case|enum|register|typedef|char|extern|return|union|continue|for|signed|void|do|if|static|while|default|goto|sizeof|volatile|const|float|short     { printf("%s is a KEYWORD\n",yytext);} 
+[{};,()]    {printf("%s is a keyword",yytext);}
+[+-/=*%]    {printf("%s is a keyword",yytext);}
+[a-zA-Z_][a-zA-Z0-9]*  {printf("%s is a keyword",yytext);}
+%%
+yywrap(){}
+int main(int argc,char* arg[]){
+extern FILE* yyin;
+yyin=fopen(arg[1],"r");
+return 0;
+}
