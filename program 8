@@ -1,0 +1,15 @@
+//valid count or not
+%{
+#include<stdio.h>
+int a=0,b=0;
+%}
+%%
+[a-zA-Z_0-9]*   {printf("Valid") a++;}
+.*              {printf("Invalid") b++;}
+%%
+yywrap();
+int main(){
+yylex();
+print("%d %d",a,b);
+return 0;
+}
