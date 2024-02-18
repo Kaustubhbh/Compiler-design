@@ -1,0 +1,14 @@
+// count no of words
+%{
+#include<stdio.h>
+int a;
+%}
+%%
+[a-zA-Z]*   {a++;}
+%%
+yywrap(){}
+int main(){
+yylex();
+printf("%d",a);
+return 0;
+}
