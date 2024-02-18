@@ -1,0 +1,15 @@
+//to count no of english alphabets
+%{
+#include<stdio.h>
+int a=0;
+%}
+%%
+[a-zA-Z]   {a++;}
+.           ;
+%%
+yywrap(){}
+int main(){
+yylex();
+printf("%d",a);
+return 0;
+}
