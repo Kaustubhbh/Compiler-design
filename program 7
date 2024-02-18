@@ -1,0 +1,13 @@
+//check valid identifier
+%{
+#include<stdio.h>
+%}
+%%
+[a-zA-Z_][0-9a-zA-z]*   {printf("valid");}
+.*  {printf("Invalid");}
+%%
+yywrap(){}
+int main(){
+yylex();
+return 0;
+}
