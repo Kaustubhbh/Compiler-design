@@ -1,0 +1,13 @@
+// valid keyword or not
+5{
+#include<stdio.h>
+%}
+%%
+"int"|"float"|"double"|"char"|"true"|"false"|"void"     {printf("valid";}
+.*                                {printf("Invalid");}
+%%
+yywrap(){}
+int main(){
+yylex();
+return 0;
+}
