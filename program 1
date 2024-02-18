@@ -1,0 +1,15 @@
+//to count no of ab
+%{
+#include<stdio.h>
+int c=0;
+%}
+%%
+ab {c++;}
+.  ;
+%%
+yywrap(){}
+int main(){
+yylex();
+printf("%d",c);
+return 0;
+}
