@@ -1,0 +1,14 @@
+// to count no of [a]* and [a]+
+%{#include<stdio.h>
+int c=0,d=0;
+%}
+%%
+[a]*   {c++;}
+[a]+   {d++;}
+%%
+yywrap(){}
+int main(){
+yylex();
+printf("%d %d",c,d);
+return 0;
+}
