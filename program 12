@@ -1,0 +1,17 @@
+//to print comment lines present in c code
+%{
+#include<stdio.h>
+%}
+%%
+"//"+[a-zA-Z0-9\n\t" "]*           {printf("   single line commemnt %s ",yytext);}
+"/*"+[a-zA-Z0-9\n\t" "]*+"*/"   {printf("  multi line comment %s",yytext);}
+.      ;
+%%
+
+yywrap(){}
+int main(int argc,char* arg[]){
+extern FILE* yyin;
+yyin=fopen("t.txt","r");
+yylex();
+return 0;
+}
