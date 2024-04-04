@@ -1,0 +1,74 @@
+%{
+%}
+%s q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12
+%%
+<INITIAL>0 BEGIN q1;
+<INITIAL>1 BEGIN q4;
+<INITIAL>\n BEGIN INITIAL;printf("Not accepting\n");
+<INITIAL>[^01\n] BEGIN q12;
+
+<q1>0 BEGIN q2;
+<q1>1 BEGIN q5;
+<q1>\n BEGIN INITIAL; printf("NOT accepting");
+<q1>[^01\n] BEGIN q12;
+
+<q2>0 BEGIN q3;
+<q2>1 BEGIN q6;
+<q2>\n BEGIN INITIAL; printf("NOT accepting");
+<q2>[^01\n] BEGIN q12;
+
+<q3>0 BEGIN q3;
+<q3>1 BEGIN q7;
+<q3>\n BEGIN INITIAL;printf("accepting\n");
+<q3>[^01\n] BEGIN q12;
+
+<q4>0 BEGIN q5;
+<q4>1 BEGIN q8;
+<q4>\n BEGIN INITIAL;printf("NOT accepting");
+<q4>[^01\n] BEGIN q12;
+
+<q5>0 BEGIN q6;
+<q5>1 BEGIN q9;
+<q5>\n BEGIN INITIAL;printf("NOT accepting");
+<q5>[^01\n] BEGIN  q12;
+
+<q6>0 BEGIN q7;
+<q6>1 BEGIN q10;
+<q6>\n BEGIN INITIAL;printf("NOT accepting");
+<q6>[^01\n] BEGIN q12;
+
+<q7>0 BEGIN q7;
+<q7>1 BEGIN q11;
+<q7>\n BEGIN INITIAL;printf(" accepting");
+<q7>[^01\n] BEGIN q12;
+
+<q8>0 BEGIN q9;
+<q8>1 BEGIN q12;
+<q8>\n BEGIN INITIAL ;printf("NOT accepting");
+<q8>[^01\n] BEGIN q12;
+
+
+<q9>0 BEGIN q10;
+<q9>1 BEGIN q12;
+<q9>\n BEGIN INITIAL; printf("NOT accepting");
+<q9>[^01\n] BEGIN q12;
+
+<q10>0 BEGIN q11;
+<q10>1 BEGIN q12;
+<q10>\n BEGIN INITIAL;printf("Not accepting");
+<q10>[^01\n] BEGIN q12;
+
+<q11>0 BEGIN q11;
+<q11>1 BEGIN q12;
+<q11>\n BEGIN INITIAL;printf("accepting");
+<q11>[^01\n] BEGIN q12;
+
+<q12>\n BEGIN INITIAL;printf("Not accepting");
+<q12>[^\n] BEGIN q12;
+%%
+int yywrap(){}
+int main()
+{
+yylex();
+return 0;
+}
